@@ -56,3 +56,18 @@ Create the database in MySQL before running migrations.
 ## Gemini
 
 Set `GEMINI_API_KEY` in `.env`. Without a key, the subjective module uses demo fallback text so the flow still works during presentations.
+
+## Render Deployment
+
+1. Create a new Web Service in Render and connect it to this GitHub repo.
+2. Use the default Python environment.
+3. Build command: `pip install -r requirements.txt`
+4. Start command: `gunicorn interview_prep.wsgi --log-file -`
+5. Add these environment variables in Render:
+   - `SECRET_KEY` = a secure random string
+   - `DEBUG` = `False`
+   - `ALLOWED_HOSTS` = your Render service domain
+   - `DATABASE_URL` = your Postgres or MySQL connection string (optional)
+   - `GEMINI_API_KEY` = optional for Gemini integration
+
+If you don't set `DATABASE_URL`, the app will fall back to SQLite, but Render deployments are more stable with an external database.
