@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Choose Role{% endblock %}
+{% block content %}
+<section class="mx-auto max-w-7xl px-4 py-10">
+    <h1 class="text-3xl font-bold">Choose Interview Role</h1>
+    <div class="mt-6 grid gap-4 md:grid-cols-4">
+        {% for role in roles %}
+            <a class="role-card" href="{% url 'interview_type_selection' role.id %}">
+                <span>{{ role.role_name }}</span>
+            </a>
+        {% empty %}
+            <p class="text-slate-600">No roles yet. Add roles in admin or run the seed command.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

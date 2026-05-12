@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Interview Type{% endblock %}
+{% block content %}
+<section class="mx-auto max-w-5xl px-4 py-10">
+    <p class="text-sm font-semibold text-blue-600">{{ role.role_name }}</p>
+    <h1 class="text-3xl font-bold">Choose Interview Type</h1>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <a class="type-card" href="{% url 'mcq_start' role.id %}"><strong>MCQ Interview</strong><span>Timer, progress, instant score</span></a>
+        <a class="type-card" href="{% url 'subjective_interview' role.id %}"><strong>Subjective Interview</strong><span>Gemini question and feedback</span></a>
+        <a class="type-card" href="{% url 'coding_challenge' role.id %}"><strong>Coding Challenge</strong><span>Save code for evaluation</span></a>
+    </div>
+</section>
+{% endblock %}
