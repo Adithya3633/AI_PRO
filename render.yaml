@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: AI_PRO
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn interview_prep.wsgi --log-file -
